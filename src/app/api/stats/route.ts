@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 
+export const dynamic = 'force-dynamic'; // Prevent caching
+
 export async function GET() {
-  export const dynamic = 'force-dynamic'; // Prevent caching
   try {
     // 1. Leads stats
     const { data: leads } = await supabaseAdmin.from("leads").select("score");
