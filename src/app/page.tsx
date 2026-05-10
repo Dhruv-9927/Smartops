@@ -111,11 +111,11 @@ export default function Dashboard() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       
       {/* Hero Section */}
-      <div className="text-center mb-16 pt-8">
-        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
-          Your business runs itself
+      <div className="text-center mb-16 pt-8 relative">
+        <h1 className="bg-gradient-to-r from-white via-emerald-200 to-white bg-clip-text text-transparent text-6xl font-black mb-6 leading-tight">
+          Your business <br className="hidden md:block"/> runs itself
         </h1>
-        <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-10">
+        <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10 font-light">
           AI-powered lead scoring, support triage, and invoice automation — 24/7.
         </p>
         
@@ -123,7 +123,7 @@ export default function Dashboard() {
           <button 
             onClick={runDemoMode}
             disabled={demoRunning}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-slate-900 hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20 disabled:opacity-70"
+            className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-8 py-3 rounded-full shadow-lg shadow-emerald-500/30 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {demoRunning ? <Loader2 className="w-5 h-5 animate-spin" /> : <PlayCircle className="w-5 h-5" />}
             {demoRunning ? "Running Demo..." : "Run Demo Mode"}
@@ -132,58 +132,58 @@ export default function Dashboard() {
       </div>
 
       {/* Stats Sections */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         
         {/* Leads */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2.5 bg-blue-50 text-blue-600 rounded-xl"><Users className="w-5 h-5" /></div>
-            <h2 className="text-lg font-semibold text-slate-900">Lead Engine</h2>
+        <div className="shadow-xl shadow-black/40 border border-white/10 backdrop-blur-sm bg-white/5 p-6 rounded-2xl group hover:-translate-y-2 transition-all duration-300">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="p-3 bg-blue-500/20 text-blue-400 rounded-2xl ring-1 ring-blue-500/30 group-hover:scale-110 transition-transform"><Users className="w-6 h-6" /></div>
+            <h2 className="text-xl font-semibold text-white tracking-wide">Lead Engine</h2>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-              <p className="text-sm text-slate-500 font-medium">Total</p>
-              <p className="text-3xl font-bold text-slate-900 mt-1">{stats.total_leads}</p>
+            <div>
+              <p className="text-sm text-slate-400 font-medium">Total</p>
+              <p className="text-5xl font-bold text-white mt-2">{stats.total_leads}</p>
             </div>
-            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-              <p className="text-sm text-slate-500 font-medium">Hot Leads</p>
-              <p className="text-3xl font-bold text-red-600 mt-1">{stats.hot_leads}</p>
+            <div>
+              <p className="text-sm text-slate-400 font-medium relative z-10">Hot Leads</p>
+              <p className="text-5xl font-bold text-emerald-400 mt-2 relative z-10">{stats.hot_leads}</p>
             </div>
           </div>
         </div>
 
         {/* Tickets */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2.5 bg-amber-50 text-amber-600 rounded-xl"><AlertCircle className="w-5 h-5" /></div>
-            <h2 className="text-lg font-semibold text-slate-900">Support Triage</h2>
+        <div className="shadow-xl shadow-black/40 border border-white/10 backdrop-blur-sm bg-white/5 p-6 rounded-2xl group hover:-translate-y-2 transition-all duration-300">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="p-3 bg-amber-500/20 text-amber-400 rounded-2xl ring-1 ring-amber-500/30 group-hover:scale-110 transition-transform"><AlertCircle className="w-6 h-6" /></div>
+            <h2 className="text-xl font-semibold text-white tracking-wide">Support Triage</h2>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-              <p className="text-sm text-slate-500 font-medium">Resolved</p>
-              <p className="text-3xl font-bold text-emerald-600 mt-1">{stats.auto_resolved_tickets}</p>
+            <div>
+              <p className="text-sm text-slate-400 font-medium relative z-10">Resolved</p>
+              <p className="text-5xl font-bold text-white mt-2 relative z-10">{stats.auto_resolved_tickets}</p>
             </div>
-            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-              <p className="text-sm text-slate-500 font-medium">Critical</p>
-              <p className="text-3xl font-bold text-red-600 mt-1">{stats.critical_tickets}</p>
+            <div>
+              <p className="text-sm text-slate-400 font-medium relative z-10">Critical</p>
+              <p className="text-5xl font-bold text-red-400 mt-2 relative z-10">{stats.critical_tickets}</p>
             </div>
           </div>
         </div>
 
         {/* Invoices */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl"><Send className="w-5 h-5" /></div>
-            <h2 className="text-lg font-semibold text-slate-900">Invoice Automation</h2>
+        <div className="shadow-xl shadow-black/40 border border-white/10 backdrop-blur-sm bg-white/5 p-6 rounded-2xl group hover:-translate-y-2 transition-all duration-300">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="p-3 bg-emerald-500/20 text-emerald-400 rounded-2xl ring-1 ring-emerald-500/30 group-hover:scale-110 transition-transform"><Send className="w-6 h-6" /></div>
+            <h2 className="text-xl font-semibold text-white tracking-wide">Invoice Auto</h2>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-              <p className="text-sm text-slate-500 font-medium">Overdue</p>
-              <p className="text-3xl font-bold text-amber-600 mt-1">{stats.overdue_invoices}</p>
+            <div>
+              <p className="text-sm text-slate-400 font-medium relative z-10">Overdue</p>
+              <p className="text-5xl font-bold text-orange-400 mt-2 relative z-10">{stats.overdue_invoices}</p>
             </div>
-            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-              <p className="text-sm text-slate-500 font-medium">Reminders</p>
-              <p className="text-3xl font-bold text-emerald-600 mt-1">{stats.reminders_sent}</p>
+            <div>
+              <p className="text-sm text-slate-400 font-medium relative z-10">Reminders</p>
+              <p className="text-5xl font-bold text-emerald-400 mt-2 relative z-10">{stats.reminders_sent}</p>
             </div>
           </div>
         </div>
@@ -191,36 +191,43 @@ export default function Dashboard() {
       </div>
 
       {/* Activity Feed */}
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-        <div className="px-6 py-5 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Activity className="w-5 h-5 text-slate-500" />
-            <h2 className="text-lg font-semibold text-slate-900">Live Activity Feed</h2>
+      <div className="shadow-xl shadow-black/40 border border-white/10 backdrop-blur-sm bg-white/5 overflow-hidden rounded-2xl">
+        <div className="px-8 py-6 border-b border-white/10 bg-black/20 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Activity className="w-5 h-5 text-emerald-400" />
+            <h2 className="text-lg font-semibold text-white tracking-wide">Live Activity Feed</h2>
           </div>
-          <div className="flex items-center gap-2 text-sm text-slate-500">
-            <span className="bg-emerald-500 rounded-full w-2 h-2 animate-pulse"></span>
+          <div className="flex items-center gap-2 text-sm text-slate-400 font-medium bg-black/30 px-3 py-1.5 rounded-full border border-white/10">
+            <span className="bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)] rounded-full w-2 h-2 animate-pulse"></span>
             Auto-refreshing
           </div>
         </div>
-        <ul className="divide-y divide-slate-100 max-h-[400px] overflow-y-auto">
-          {stats.recent_activity.map(activity => (
-            <li key={activity.id} className="p-4 hover:bg-slate-50 transition-colors flex items-center gap-4">
-              <div className="shrink-0 mt-0.5">
-                {activity.badge === 'red' && <div className="w-3 h-3 rounded-full bg-red-500"></div>}
-                {activity.badge === 'yellow' && <div className="w-3 h-3 rounded-full bg-yellow-500"></div>}
-                {activity.badge === 'gray' && <div className="w-3 h-3 rounded-full bg-slate-400"></div>}
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-slate-900">{activity.label}</p>
-                <p className="text-xs text-slate-500 capitalize">{activity.type}</p>
-              </div>
-              <div className="shrink-0 text-xs text-slate-400">
-                {formatDistanceToNow(new Date(activity.created_at), { addSuffix: true })}
-              </div>
-            </li>
-          ))}
+        <ul className="divide-y divide-white/10 max-h-[400px] overflow-y-auto p-2">
+          {stats.recent_activity.map(activity => {
+            const isInvoice = activity.type === 'invoice';
+            const isLead = activity.type === 'lead';
+            const isTicket = activity.type === 'ticket';
+            
+            return (
+              <li key={activity.id} className="p-4 hover:bg-white/5 rounded-xl transition-colors flex items-center gap-5 my-1 border-l-2 border-emerald-500/30 pl-4">
+                <div className="shrink-0">
+                  {isInvoice && <div className="w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)] animate-pulse"></div>}
+                  {isLead && <div className="w-3 h-3 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)] animate-pulse"></div>}
+                  {isTicket && <div className="w-3 h-3 rounded-full bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.8)] animate-pulse"></div>}
+                  {!isInvoice && !isLead && !isTicket && <div className="w-3 h-3 rounded-full bg-slate-400"></div>}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-base font-medium text-slate-200">{activity.label}</p>
+                  <p className="text-sm text-slate-400 capitalize mt-0.5 font-light">{activity.type}</p>
+                </div>
+                <div className="shrink-0 text-sm text-slate-500 font-light bg-black/30 px-3 py-1 rounded-full border border-white/10">
+                  {formatDistanceToNow(new Date(activity.created_at), { addSuffix: true })}
+                </div>
+              </li>
+            );
+          })}
           {stats.recent_activity.length === 0 && (
-            <li className="p-8 text-center text-slate-500">No recent activity.</li>
+            <li className="p-12 text-center text-slate-500 font-light text-lg">Waiting for incoming events...</li>
           )}
         </ul>
       </div>

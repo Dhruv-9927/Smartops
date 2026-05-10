@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -27,11 +22,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 min-h-screen text-slate-900`}>
+    <html lang="en" className="dark">
+      <body className={`${outfit.variable} antialiased bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 min-h-screen text-slate-50 relative selection:bg-emerald-500/30 overflow-x-hidden`}>
         <Navigation />
-        {children}
-        <Toaster position="bottom-right" />
+        <main className="relative z-10 pt-16">
+          {children}
+        </main>
+        <Toaster 
+          position="bottom-right"
+          toastOptions={{
+            style: {
+              background: '#1e293b',
+              color: '#f8fafc',
+              border: '1px solid #334155',
+            }
+          }}
+        />
       </body>
     </html>
   );

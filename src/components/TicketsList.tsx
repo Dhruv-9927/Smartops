@@ -57,31 +57,37 @@ export default function TicketsList() {
   }
 
   return (
-    <ul className="divide-y divide-slate-100 max-h-[600px] overflow-y-auto">
-      {tickets.map(ticket => (
-        <li key={ticket.id} className="p-4 hover:bg-slate-50 transition-colors flex items-start gap-4">
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-slate-900 truncate">{ticket.subject}</p>
-            <p className="text-sm text-slate-500 truncate">{ticket.customer_name}</p>
-          </div>
-          <div className="flex flex-col items-end gap-2 shrink-0">
-            <div className="flex items-center gap-2">
-              {ticket.urgency === "CRITICAL" && <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800">CRITICAL</span>}
-              {ticket.urgency === "NORMAL" && <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">NORMAL</span>}
-              {ticket.urgency === "LOW" && <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-800">LOW</span>}
-              
-              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border ${
-                ticket.status === 'auto_resolved' ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-amber-200 bg-amber-50 text-amber-700'
-              }`}>
-                {ticket.status.replace('_', ' ')}
-              </span>
+    <ul className="divide-y divide-white/10 max-h-[600px] overflow-y-auto">
+      {tickets.map(ticket => {
+        let borderClass = "border-l-slate-600";
+        if (ticket.urgency === "CRITICAL") borderClass = "border-l-red-500";
+        if (ticket.urgency === "NORMAL") borderClass = "border-l-yellow-500";
+
+        return (
+          <li key={ticket.id} className={`p-4 hover:bg-white/5 transition-colors flex items-start gap-4 border-l-4 ${borderClass}`}>
+            <div className="flex-1 min-w-0">
+              <p className="text-base font-medium text-white truncate tracking-wide">{ticket.subject}</p>
+              <p className="text-sm text-slate-400 truncate mt-0.5 font-light">{ticket.customer_name}</p>
             </div>
-            <p className="text-xs text-slate-400">
-              {formatDistanceToNow(new Date(ticket.created_at), { addSuffix: true })}
-            </p>
-          </div>
-        </li>
-      ))}
+            <div className="flex flex-col items-end gap-2 shrink-0">
+              <div className="flex items-center gap-2">
+                {ticket.urgency === "CRITICAL" && <span className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold bg-red-500/10 text-red-400 ring-1 ring-red-500/20 shadow-[0_0_10px_rgba(248,113,113,0.2)]">CRITICAL</span>}
+                {ticket.urgency === "NORMAL" && <span className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold bg-yellow-500/10 text-yellow-400 ring-1 ring-yellow-500/20 shadow-[0_0_10px_rgba(250,204,21,0.2)]">NORMAL</span>}
+                {ticket.urgency === "LOW" && <span className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold bg-slate-800 text-slate-300 ring-1 ring-slate-700">LOW</span>}
+                
+                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${
+                  ticket.status === 'auto_resolved' ? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400' : 'border-orange-500/20 bg-orange-500/10 text-orange-400'
+                }`}>
+                  {ticket.status.replace('_', ' ')}
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 bg-black/30 px-2.5 py-1 rounded-full border border-white/5 font-light">
+                {formatDistanceToNow(new Date(ticket.created_at), { addSuffix: true })}
+              </p>
+            </div>
+          </li>
+        );
+      })}
     </ul>
   );
 }
