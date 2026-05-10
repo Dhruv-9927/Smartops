@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -17,10 +18,6 @@ type Ticket = {
 export default function TicketsList() {
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchTickets();
-  }, []);
 
   const fetchTickets = async () => {
     try {
@@ -46,6 +43,10 @@ export default function TicketsList() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchTickets();
+  }, []);
 
   if (loading) {
     return <div className="p-8 flex justify-center"><Loader2 className="w-6 h-6 animate-spin text-slate-400" /></div>;

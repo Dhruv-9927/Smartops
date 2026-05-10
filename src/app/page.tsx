@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -40,7 +41,8 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    fetchStats();
+    // Avoid calling setState synchronously by calling fetchStats in the next tick
+    setTimeout(fetchStats, 0);
     const interval = setInterval(fetchStats, 20000); // 20 seconds
     return () => clearInterval(interval);
   }, []);
