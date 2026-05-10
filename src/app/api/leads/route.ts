@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const { name, email, company, budget, problem } = await req.json();
 
     const completion = await groq.chat.completions.create({
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       response_format: { type: "json_object" },
       messages: [
         {
