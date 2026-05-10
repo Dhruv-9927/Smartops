@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "next";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { Loader2 } from "lucide-react";
 

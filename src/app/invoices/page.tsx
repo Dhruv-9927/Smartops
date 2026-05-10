@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "next";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import toast from "react-hot-toast";
 import { differenceInDays } from "date-fns";

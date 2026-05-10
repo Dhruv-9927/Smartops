@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "next";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { formatDistanceToNow } from "date-fns";
 import { Loader2 } from "lucide-react";

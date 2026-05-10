@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "next";
+import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { Loader2, PlayCircle, Activity, CheckCircle2, AlertCircle, Send, Users, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
